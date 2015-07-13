@@ -6,7 +6,7 @@
 				<li onclick="go_to_signin_page()">
 					<a href="#">Sign In</a>
 				</li>
-				<li>
+				<li onclick="go_to_signup_page()">
 					<a href="#">Sign Up</a>
 				</li>
 			</ul>

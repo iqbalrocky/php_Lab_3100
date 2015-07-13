@@ -4,6 +4,7 @@
 		<title>Rapid Learning</title>
 		<link rel="stylesheet" href="style/home_page_style.css" type="text/css" />
 		<link rel="stylesheet" href="style/signin_page_style.css" type="text/css" />
+		<link rel="stylesheet" href="style/signup_page_style.css" type="text/css" />
 		<script type="text/javaScript" src="script/home_page_function.js">
 </script>
 	</head>
@@ -13,6 +14,7 @@
 		<div id="body_container">
 			<?php include('php/background_image_with_banner.php'); ?>
 			<?php include('php/signin_with_side_tab.php'); ?>
+			<?php include('php/signup_with_side_tab.php'); ?>
 		</div>
 	</body>
 
@@ -22,5 +24,7 @@
 <!--
 	Try and fail:
 		blur effect on a image (for attractive effect need JS framework)
+	Problem 1:
+		If change doctype html to html5 then "signup" div change it's position.
 -->
 

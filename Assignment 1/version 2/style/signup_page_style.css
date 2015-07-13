@@ -1,11 +1,11 @@
-#login_page {
+#signup_page {
 	visibility: hidden;
 	left: 300px;
 	height:98%;
 	width:20.9%;
 	float: right;
 }
-#login_page_margin{
+#signup_page_margin{
 	position: fixed;
 	width:20%;
 	margin: 2px;
@@ -16,12 +16,14 @@
 label{
 	font-family:icon;
 }
-#input_block {
+#signup_input_block {
 	margin:auto;
 	width: 90%;
 	padding-top: 200px;
 }
-#input_block input[type="text"], #input_block input[type="password"] {
+#signup_input_block input[type="text"],
+#signup_input_block input[type="email"],
+#signup_input_block input[type="password"] {
   padding: 7px 5px;
   margin: 10px 0;
   width: 96%;
@@ -29,7 +31,7 @@ label{
   font-size: 18px;
   border-radius: 5px;
 }
-#input_block input[type="submit"] {
+#signup_input_block input[type="submit"] {
   background: #7369A7;
   padding: 10px;
   font-size: 20px;
@@ -40,17 +42,17 @@ label{
   border-radius: 5px;
   font-family: arial;
 }
-#input_block input[type="submit"]:hover {
+#signup_input_block input[type="submit"]:hover {
   background-color: #61aD61;
   font-weight: bolder;
 }
-#close_btn {
+#signup_close_btn {
 	font-family: icon;
 	float: right;
 	font-size: 18px;
 	margin: 5px;
 }
-#close_btn a {
+#signup_close_btn a {
 	text-decoration: none;
 	color: red;
 }
