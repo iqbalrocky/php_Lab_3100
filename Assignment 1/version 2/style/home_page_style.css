@@ -1,0 +1,75 @@
+@font-face{
+	src:url("../fonts/pictos-regular-webfont.ttf") format("truetype"),
+		url("../fonts/pictos-regular-webfont.otf") format("opentype"),
+		url("../fonts/pictos-regular-webfont.svg") format("svg");
+	font-family:icon;
+}
+body {
+  margin: 0;
+}
+
+#bg_img_container {
+	background-image: url('../img/kid_with_pc_background.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: 800px;
+	float: left;
+	
+	/*
+	-webkit-filter: blur(5px);
+  	-moz-filter: blur(5px);
+  	-o-filter: blur(5px);
+  	-ms-filter: blur(5px);
+  	filter: blur(5px);
+	 */
+}
+
+#menu_logo_container{
+  	height: 108px;
+	padding: 5px 0 0 5px;
+	color: #000000;
+  	background-color: #00BFFF;
+  	opacity : .6;
+}
+
+#rl_logo{
+	width: 105px;
+	height: 82px;
+	padding: 10px;
+	content: url('../img/rl_logo.png');
+	background-color: #ffffff;
+	border-radius: 10px;
+	float: left;
+}
+#main_menu{
+	width: 210px;
+	height: 100%;
+	float:right;
+    vertical-align: bottom;
+	font-size: 20px;
+	color: #FFFFFF;
+	text-align: right;
+}
+#main_menu ul {
+	list-style-type: none;
+	margin: 70px 10px 10px;
+	padding: 0;
+}
+#main_menu li {
+	display: inline;
+	padding: 5px 10px;
+	margin-right: 5px;
+	background-color: #221177;
+	border-radius: 5px;
+}
+#main_menu a {
+	font-family: arial;
+	text-decoration: none;
+	text-transform: capitalize;
+	color: white;
+}
+#main_menu li:hover {
+	background-color: green;
+	font-weight: bolder;
+}

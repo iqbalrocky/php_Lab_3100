@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Rapid Learning</title>
+		<link rel="stylesheet" href="style/home_page_style.css" type="text/css" />
+		<link rel="stylesheet" href="style/signin_page_style.css" type="text/css" />
+		<script type="text/javaScript" src="script/home_page_function.js">
+</script>
+	</head>
+	<body>
+		<script type="text/javaScript" src="home_page_function.js">
+</script>
+		<div id="body_container">
+			<div id="bg_img_container">
+				<div id="menu_logo_container">
+					<div id="rl_logo"></div>
+					<div id="main_menu">
+						<ul>
+							<li onclick="go_to_signin_page()">
+								<a href="#">Sign In</a>
+							</li>
+							<li>
+								<a href="#">Sign Up</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id='login_page'>
+				<div id='login_page_margin'>
+					<div id="close_btn">
+						<a href="#" onclick="close_window()">X</a>
+					</div>
+					<form action="../version 1/info.php" method="post">
+						<div id='input_block'>
+							<input type="text" name='name' required placeholder="Username or Email" 
+								pattern="[a-zA-Z0-9' ']+" title='User name should not contain symble'/>
+							<input type="password" name='password' required pattern="[a-zA-Z0-9]+"
+								title='only alphanumeric character'
+								placeholder="Password" />
+							<input type='submit' name='submit' value='Sign In' />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
+
+
+<!--
+	Try and fail:
+		include for php
+		blur effect on a image
+-->
+

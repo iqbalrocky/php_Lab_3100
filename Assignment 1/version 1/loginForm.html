@@ -1,0 +1,14 @@
+<!doctype html5>
+<html>
+	<head>
+		<title>
+			Login Page
+		</title>
+	</head>
+	<h3>LOGIN FORM</h3>
+	<form action="info.php" method="post">
+		USER NAME: <input type="text" name='name' size="20" required/><br>
+		PASSWORD: <input type="password" name='password' size='15' required pattern="[a-zA-Z0-9]" oninvalid="setCustomValidity('only alphanumeric character')" /><br>
+		<input type='submit' name='submit' value='SUBMIT'/>
+	</form>
+</html>
