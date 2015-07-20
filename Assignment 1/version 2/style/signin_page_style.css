@@ -17,9 +17,14 @@ label{
 	font-family:icon;
 }
 #input_block {
+	height: 50%;
+  	position: absolute;
 	margin:auto;
 	width: 90%;
-	padding-top: 200px;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
 }
 #input_block input[type="text"], #input_block input[type="password"] {
   padding: 7px 5px;

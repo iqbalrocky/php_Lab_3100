@@ -17,9 +17,14 @@ label{
 	font-family:icon;
 }
 #signup_input_block {
+  	height: 50%;
+  	position: absolute;
 	margin:auto;
 	width: 90%;
-	padding-top: 200px;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
 }
 #signup_input_block input[type="text"],
 #signup_input_block input[type="email"],
