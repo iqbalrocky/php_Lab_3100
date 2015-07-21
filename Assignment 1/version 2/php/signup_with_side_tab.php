@@ -4,7 +4,7 @@
 			<a href="#" onclick="close_window()">X</a>
 		</div>
 		<!--<form action="../version 1/info.php" method="post">-->
-		<form action="php/processing.php" method="post">
+		<form action="php/signUpProcessing.php" method="post">
 			<div id='signup_input_block'>
 				<input type="text" name='name' maxlength='25' required placeholder="Username" 
 					pattern="[a-zA-Z0-9' ']+" title='User name should not contain symble'/>

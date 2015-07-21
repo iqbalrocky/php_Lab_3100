@@ -3,7 +3,8 @@
 		<div id="close_btn">
 			<a href="#" onclick="close_window()">X</a>
 		</div>
-		<form action="../version 1/info.php" method="post">
+		<!--<form action="../version 1/info.php" method="post">-->
+		<form action="php/signInProcessing.php" method="post">	
 			<div id='input_block'>
 				<input type="text" name='name' required placeholder="Username or Email" 
 					pattern="[a-zA-Z0-9' ']+" title='User name should not contain symble'/>

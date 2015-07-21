@@ -14,6 +14,6 @@
 	mysqli_set_charset($dbc,'utf8');
 	
 	//massage for connected confermation
-	echo "U R connected to ".$dbname." Database";
+	//echo "U R connected to ".$dbname." Database.<br>";
 		
 ?>
