@@ -1,22 +1,26 @@
 <?php
 	if ($_SERVER["REQUEST_METHOD"] == 'POST') {
-		$userName = $_REQUEST['name'];
-		$userEmail = $_REQUEST['email'];
-		$userPassword = $_REQUEST['password'];
+		
+		include('connection.php');
+		
+		$userName = mysqli_real_escape_string($dbc,trim($_REQUEST['name']));
+		$userEmail = mysqli_real_escape_string($dbc,trim($_REQUEST['email']));
+		$userPassword = mysqli_real_escape_string($dbc,trim($_REQUEST['password']));
 		
 		//if (isset($userName,$userEmail,$userPassword)) {
 		/*
 			some time isset() does not working because of its can 
 			not check set value of some field like password.
 		*/
-		if (!empty($userName) && !empty($userEmail) && 
-			!empty($userPassword)) {
-			include('connection.php');
+		if (!empty($userName) && !empty($userEmail) && !empty($userPassword)) {
 			
 			mysqli_query($dbc, "INSERT INTO `signup` (`UserName`, `UserEmail`, `UserPassword`) VALUES ('$userName','$userEmail','$userPassword')");
 			$registered = mysqli_affected_rows($dbc);
 			echo "<br>";
-			echo $registered." row is affected, everything work fine.";			
+			echo $registered." row is affected, everything work fine.";
+			
+			mysqli_close($dbc);
+					
 		} else {
 			echo "please fill all values of the form";
 		}
