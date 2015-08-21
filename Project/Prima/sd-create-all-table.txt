@@ -1,0 +1,182 @@
+*******CHAPTER********
+
+CREATE TABLE  Chapter
+(
+Chapter_Id int NOT NULL,
+ChapterName varchar(50) NOT NULL,
+Info varchar(100),
+CONSTRAINT pk_ChapterID PRIMARY KEY (Chapter_Id)
+)
+
+*****POst*******
+CREATE TABLE  Post
+(
+Post_Id int NOT NULL,
+Title varchar(50) NOT NULL,
+Date_Of_Post date not null,
+CONSTRAINT pk_PostID PRIMARY KEY (Post_Id)
+)
+
+******Exams******
+CREATE TABLE Exams(
+Exam_Id INT NOT NULL ,
+Total_Ques INT NOT NULL ,
+TIME INT NOT NULL ,
+Chapter_Id INT,
+PRIMARY KEY ( Exam_Id ) ,
+CONSTRAINT fk_PerExams FOREIGN KEY ( Exam_Id ) REFERENCES Chapter( Chapter_Id )
+
+
+*********QuestionList********
+CREATE TABLE QuestionList(
+Question_Id INT NOT NULL ,
+Question VARCHAR( 200 ) NOT NULL ,
+Answers Varchar(100) Not null,
+Exam_Id INT,
+PRIMARY KEY ( Question_Id ) ,
+CONSTRAINT fk_PerQuestionList FOREIGN KEY ( Exam_Id ) REFERENCES Exams( Exam_Id )
+)
+
+
+
+******Register**********
+CREATE TABLE Register(
+Register_Id INT NOT NULL ,
+UserName VARCHAR( 100 ) NOT NULL ,
+Email VARCHAR( 50 ) NOT NULL ,
+PASSWORD VARCHAR( 50 ) NOT NULL ,
+CONSTRAINT pk_RegisterID PRIMARY KEY ( Register_Id )
+)
+
+
+*********TeacherProfile*********
+
+
+
+CREATE TABLE TeacherProfile
+(
+Teacher_Id int NOT NULL,
+Image int NOT NULL,
+Register_Id int,
+TeacherName Varchar(50) not null,
+TeacherAddress Varchar(100) not null,
+ContactNo Varchar(15) not null,
+Biography_Skill Varchar(100) not null,
+PRIMARY KEY (Teacher_Id),
+CONSTRAINT fk_PerTeacherProfile FOREIGN KEY (Register_Id)
+REFERENCES Register1(Register_Id)
+)
+
+************StudentProfile************
+CREATE TABLE Student
+(
+Student_Id int NOT NULL,
+Image int NOT NULL,
+Register_Id int,
+StudentName Varchar(50) not null,
+StudentAddress Varchar(100) not null,
+Student_ContactNo Varchar(15) not null,
+Biography_Skill Varchar(100) not null,
+PRIMARY KEY (Student_Id),
+CONSTRAINT fk_PerStudent FOREIGN KEY (Register_Id)
+REFERENCES Register1(Register_Id)
+)
+
+************Course*************
+CREATE TABLE Course
+(
+Course_Id int NOT NULL,
+CourseWeek int NOT NULL,
+Teacher_Id int,
+CourseName Varchar(50) not null,
+Description Varchar(200) not null,
+StartingDate date not null,
+EndingDate date not null,
+PRIMARY KEY (Course_Id),
+CONSTRAINT fk_PerCourse FOREIGN KEY (Teacher_Id)
+REFERENCES TeacherProfile(Teacher_Id)
+)
+
+
+************PostLike*********
+
+
+CREATE TABLE PostLike
+(
+PostLike_Id int NOT NULL,
+
+Register_Id int,
+Post_Id int,
+PRIMARY KEY (PostLike_Id),
+CONSTRAINT fk_PerPostLike FOREIGN KEY (Register_Id)
+REFERENCES Register1(Register_Id)
+
+)
+
+
+***add another fk
+
+
+ALTER TABLE PostLike
+ADD FOREIGN KEY (Post_Id)
+REFERENCES Post(Post_Id)
+
+
+
+
+******Comment*******
+CREATE TABLE COMMENT (
+Comment_Id INT NOT NULL ,
+Register_Id INT,
+CommentTime TIME NOT NULL ,
+CommentDate DATE NOT NULL ,
+PRIMARY KEY ( Comment_Id ) ,
+CONSTRAINT fk_PerComment FOREIGN KEY ( Register_Id ) REFERENCES Register1( Register_Id )
+
+
+
+*****CommentLike******
+
+CREATE TABLE CommentLike (
+CommentLike_Id INT NOT NULL ,
+Register_Id INT,
+Comment_Id int not null,
+PRIMARY KEY ( CommentLike_Id ) ,
+CONSTRAINT fk_PerCommentLike FOREIGN KEY ( Comment_Id ) REFERENCES  Comment( Comment_Id )
+)
+
+****
+ALTER TABLE  CommentLike
+ADD FOREIGN KEY (Register_Id)
+REFERENCES Register(Register_Id)
+
+
+
+
+
+
+*****Others*****
+
+
+
+CREATE TABLE Others(
+Others_Id INT NOT NULL ,
+Post_Id INT,
+Link VARCHAR( 100 ) NOT NULL ,
+PRIMARY KEY ( Others_Id ) ,
+CONSTRAINT fk_PerOthers FOREIGN KEY ( Post_Id ) REFERENCES Post( Post_Id )
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
