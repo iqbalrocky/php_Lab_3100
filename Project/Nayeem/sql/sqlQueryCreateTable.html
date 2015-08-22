@@ -1,0 +1,73 @@
+******Register**********
+CREATE TABLE Register(
+Register_Id INT NOT NULL AUTO_INCREMENT ,
+UserName VARCHAR( 50 ) NOT NULL UNIQUE,
+Email VARCHAR( 50 ) NOT NULL UNIQUE,
+PASSWORD VARCHAR( 50 ) NOT NULL ,
+CONSTRAINT pk_RegisterID PRIMARY KEY ( Register_Id )
+)
+
+*********TeacherProfile*********
+
+CREATE TABLE TeacherProfile
+(
+Register_Id int,
+ImageLink Varchar(50) NOT NULL,
+TeacherName Varchar(50) not null,
+TeacherAddress Varchar(100) not null,
+ContactNo Varchar(20) not null,
+Biography_Skill Varchar(200) not null,
+PRIMARY KEY (Register_Id),
+CONSTRAINT fk_PerTeacherProfile FOREIGN KEY (Register_Id)
+REFERENCES Register(Register_Id)
+)
+
+
+
+************Course*************
+CREATE TABLE Course
+(
+Course_Id int NOT NULL AUTO_INCREMENT,
+Register_Id int,
+CourseName Varchar(50) not null,
+Description Varchar(300) not null,
+StartingDate date not null,
+EndingDate date null,
+PRIMARY KEY (Course_Id),
+CONSTRAINT fk_PerCourse FOREIGN KEY (Register_Id)
+REFERENCES TeacherProfile(Register_Id)
+)
+
+*******CHAPTER********
+CREATE TABLE  Chapter
+(
+Chapter_Id int NOT NULL AUTO_INCREMENT,
+Course_Id int NOT NULL,
+ChapterName varchar(50) NOT NULL,
+CONSTRAINT pk_ChapterID PRIMARY KEY (Chapter_Id),
+CONSTRAINT fk_PerChapter FOREIGN KEY (Course_Id)
+REFERENCES Course(Course_Id)
+)
+
+*****Post*******
+CREATE TABLE  Post
+(
+Post_Id int NOT NULL AUTO_INCREMENT,
+Chapter_Id int NOT NULL,
+Title varchar(50) NOT NULL,
+Date_Of_Post date not null,
+CONSTRAINT pk_PostID PRIMARY KEY (Post_Id),
+CONSTRAINT fk_PerPost FOREIGN KEY (Chapter_Id)
+REFERENCES Chapter(Chapter_Id)
+)
+
+********Document**************
+CREATE TABLE Document(
+Document_ID INT NOT NULL AUTO_INCREMENT,
+Post_Id INT NOT NULL ,
+Title varchar(50),
+Type varchar(20),
+FullDocument Text NOT NULL ,
+PRIMARY KEY ( Document_ID ) ,
+CONSTRAINT fk_PerDocument FOREIGN KEY ( Post_Id ) REFERENCES Post( Post_Id )
+)
