@@ -8,11 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <style>
-  #section1 {color: #fff; background-color: #1E88E5;}
-  #section2 {color: #fff; background-color: #673ab7;}
-  #section3 {color: #fff; background-color: #ff9800;}
-  #section41 {color: #fff; background-color: #00bcd4;}
-  #section42 {color: #fff; background-color: #009688;}
+  .tab-pane {color: #000; background-color: #fff;}
 
 
   .nav-pills > li.active > a, .nav-pills > li.active > a:focus {
@@ -28,8 +24,8 @@
 </head>
 <body>
 
-<div class="container">
-  <div style="background-color:#2196F3;color:#fff;height:200px;">
+<div class="container-fluid">
+  <div class="jumbotron" style="background-color:#2196F3 ;color:#fff ;height:200px;">
     <?php
       if($_GET["course"] == "C Programming") {
         include('connection.php');
@@ -38,9 +34,7 @@
         if ($numrowsCourse > 0) {
     				$queryResultCourse = mysqli_fetch_array($queryCourse);
             echo "<h2>".$queryResultCourse['CourseName']."</h2>";
-            echo "<p>".$queryResultCourse['Description']."</p>";
-            $queryChapter = mysqli_query($dbc, "SELECT * FROM `chapter` WHERE `Course_Id` = ".$queryResultCourse['Course_Id']);
-            $numrowsChapter = mysqli_num_rows($queryChapter);
+            echo "<p><small>".$queryResultCourse['Description']."</small></p>";
           }
         }
     ?>
@@ -49,20 +43,24 @@
     <nav class="col-sm-3">
       <ul class="nav nav-pills nav-stacked">
         <?php
+        $queryChapter = mysqli_query($dbc, "SELECT * FROM `chapter` WHERE `Course_Id` = ".$queryResultCourse['Course_Id']);
+        $numrowsChapter = mysqli_num_rows($queryChapter);
         if ($numrowsChapter > 0) {
+          $chapterIndex = 0;
           while ($queryResultChapter = mysqli_fetch_array($queryChapter)) {
+            $chapterIndex++;
             echo "<li><h3>".$queryResultChapter['ChapterName']."</h3></li>";
             $queryPost = mysqli_query($dbc, "SELECT * FROM `post` WHERE `Chapter_Id` = ".$queryResultChapter['Chapter_Id']);
             $numrowsPost = mysqli_num_rows($queryPost);
             if ($numrowsPost > 0) {
-              $indexFotPost = 0;
+              $postIndex = 0;
               while ($queryResultPost = mysqli_fetch_array($queryPost)) {
-
-                if ($indexFotPost == 0) {
-                  echo "<li class=\"active\" ><a href=\"#section".$indexFotPost."\" data-toggle=\"pill\">";
-                  $indexFotPost++;
+                $postIndex++;
+                //echo $chapterIndex.$postIndex;
+                if ($postIndex == 1) {
+                  echo "<li class=\"active\" ><a href=\"#section".$chapterIndex.$postIndex."\" data-toggle=\"pill\">";
                 } else {
-                  echo "<li><a href=\"#section".$indexFotPost."\" data-toggle=\"pill\">";
+                  echo "<li><a href=\"#section".$chapterIndex.$postIndex."\" data-toggle=\"pill\">";
                 }
                 echo "<h4>".$queryResultPost['Title']."</h4>";
                 echo "</a></li>";
@@ -77,18 +75,25 @@
     </nav>
     <div class="col-sm-9 tab-content">
       <?php
-        for($index = 1 ; $index <= $numrowsPost ; $index++) {
-          // echo "<div id=\"section".$index."\" class=\"tab-pane fade in active\">";
-          echo "<div id=\"section1\" class=\"tab-pane fade in active\">";
-          $queryDocument = mysqli_query($dbc, "SELECT * FROM `Document` WHERE `Post_Id` = 1");
-          $numrowsDocument = mysqli_num_rows($queryDocument);
-          if ($numrowsDocument > 0) {
-            while ($queryResultDocument = mysqli_fetch_array($queryDocument)) {
-              echo "<h1>".$queryResultDocument['Title']."</h1>";
-              echo "<p>".$queryResultDocument['FullDocument']."</p>";
+        for($indexChapter = 1 ; $indexChapter <= $numrowsChapter ; $indexChapter++) {
+          for($indexPost = 1 ; $indexPost <= $numrowsPost ; $indexPost++) {
+            // echo "<div id=\"section".$index."\" class=\"tab-pane fade in active\">";
+            echo "<div id=\"section".$indexChapter.$indexPost."\" class=\"tab-pane fade in active\">";
+            //echo $indexChapter.$indexPost;
+            $queryDocument = mysqli_query($dbc, "SELECT * FROM `Document` WHERE `Post_Id` = $indexPost");
+            $numrowsDocument = mysqli_num_rows($queryDocument);
+            if ($numrowsDocument > 0) {
+              while ($queryResultDocument = mysqli_fetch_array($queryDocument)) {
+                echo "<h2>".$queryResultDocument['Title']."</h2>";
+                if ($queryResultDocument['Type'] == 'code') {
+                  echo "<pre>".$queryResultDocument['FullDocument']."</pre>";
+                } else {
+                  echo "<p>".$queryResultDocument['FullDocument']."</p>";
+                }
+              }
             }
+            echo "</div>";
           }
-          echo "</div>";
         }
       ?>
 
