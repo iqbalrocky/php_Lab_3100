@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,34 +11,52 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <style>
-  .tab-pane {color: #000; background-color: #fff;}
+    .tab-pane {color: #000; background-color: #fff;}
 
 
-  .nav-pills > li.active > a, .nav-pills > li.active > a:focus {
+    .nav-pills > li.active > a, .nav-pills > li.active > a:focus {
         color: black;
         background-color: #fcd900;
     }
 
-        .nav-pills > li.active > a:hover {
-            background-color: #efcb00;
-            color:black;
-        }
+    .nav-pills > li.active > a:hover {
+        background-color: #efcb00;
+        color:black;
+    }
+
+    .jumbotron {
+        padding: 2em 1em;
+        min-height: 200px;
+        background-color: #2196F3 ;
+        color:#fff ;
+    }
   </style>
 </head>
 <body>
-
+<?php
+  include('connection.php');
+  if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+    $CourseName =  mysqli_real_escape_string($dbc,trim($_POST['course']));
+    $_SESSION["course"] = $CourseName;
+  }
+  else if (!empty($_SESSION["course"])){
+    $CourseName = $_SESSION["course"];
+  }
+  else {
+    header("location:index.html");
+  }
+?>
 <div class="container-fluid">
-  <div class="jumbotron" style="background-color:#2196F3 ;color:#fff ;height:200px;">
+  <div class="jumbotron">
     <?php
-      if($_GET["course"] == "C Programming") {
-        include('connection.php');
-        $queryCourse = mysqli_query($dbc, "SELECT * FROM `course` WHERE `CourseName` = '".$_GET["course"]."'");
+        $queryCourse = mysqli_query($dbc, "SELECT * FROM `course` WHERE `CourseName` = '".$CourseName."'");
         $numrowsCourse = mysqli_num_rows($queryCourse);
         if ($numrowsCourse > 0) {
     				$queryResultCourse = mysqli_fetch_array($queryCourse);
             echo "<h2>".$queryResultCourse['CourseName']."</h2>";
             echo "<p><small>".$queryResultCourse['Description']."</small></p>";
-          }
+        } else {
+            header("location:index.html");
         }
     ?>
   </div>
