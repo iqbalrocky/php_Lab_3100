@@ -25,11 +25,14 @@
     }
 
     .jumbotron {
-        padding: 2em 1em;
+        padding: 3em 5em;
+        padding-top: 5em;
         min-height: 200px;
         background-color: #2196F3 ;
         color:#fff ;
     }
+
+
   </style>
 </head>
 <body>
@@ -45,8 +48,31 @@
   else {
     header("location:index.html");
   }
-?>
-<div class="container-fluid">
+  ?>
+
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Rapid Learning</a>
+              </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                      <li><a href="index.html#section1"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                      <li><a href="course.php"><?php echo $CourseName; ?></a></li>
+                      <li><a href="index.html#section3">About Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+
   <div class="jumbotron">
     <?php
         $queryCourse = mysqli_query($dbc, "SELECT * FROM `course` WHERE `CourseName` = '".$CourseName."'");
@@ -60,6 +86,7 @@
         }
     ?>
   </div>
+  <div class="container-fluid">
   <div class="row">
     <nav class="col-sm-3">
       <ul class="nav nav-pills nav-stacked">
