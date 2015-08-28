@@ -1,0 +1,206 @@
+
+*********POST3****************************
+
+INSERT INTO `Post`(`Chapter_Id`, `Title`,`Date_Of_Post`)
+  VALUES (1 , 'C - Environment Setup',Now())
+
+
+************Document3************
+
+INSERT INTO `Document` (`Post_Id` , `Title` , `Type` , `FullDocument`)
+  
+VALUES ( 3 ,'Try it Option Online','text', 'You really do not need to set up your own environment to start learning C programming language. Reason is very simple, we already have set up C Programming environment online, so that you can compile and execute all the available examples online at the same time when you are doing your theory work. This gives you confidence in what you are reading and to check the result with different options. Feel free to modify any example and execute it online.'),
+  
+
+(3,'','text','Try following example using Try it option available at the top right corner of the below sample code box:'),
+  
+
+(3,'','code',
+
+'#include <stdio.h>
+
+int main()
+{
+   /* my first program in C */
+   printf("Hello, World! \n");
+   
+   return 0;
+}'),
+  
+
+
+
+   
+(3,'','text','For most of the examples given in this tutorial, you will find Try it option, so just make use of it and enjoy your learning.'), 
+
+
+   
+
+
+  
+(3,'Local Environment Setup','text','If you are still willing to set up your environment for C programming language, you need the following two softwares available on your computer, (a) Text Editor and (b) The C Compiler.'), 
+  
+(3,'Text Editor','text','This will be used to type your program. Examples of few editors include Windows Notepad, OS Edit command, Brief, Epsilon, EMACS, and vim or vi.'), 
+
+(3,'','text','Name and version of text editor can vary on different operating systems. For example, Notepad will be used on Windows, and vim or vi can be used on windows as well as Linux or UNIX.'), 
+
+(3,'','text','The files you create with your editor are called source files and contain program source code. The source files for C programs are typically named with the extension ".c".'), 
+
+(3,'','text','Before starting your programming, make sure you have one text editor in place and you have enough experience to write a computer program, save it in a file, compile it and finally execute it.'), 
+
+(3,'The C Compiler','text','The source code written in source file is the human readable source for your program. It needs to be "compiled", to turn into machine language so that your CPU can actually execute the program as per instructions given.'), 
+
+(3,'','text','This C programming language compiler will be used to compile your source code into final executable program. I assume you have basic knowledge about a programming language compiler.'), 
+
+(3,'','text','Most frequently used and free available compiler is GNU C/C++ compiler, otherwise you can have compilers either from HP or Solaris if you have respective Operating Systems.'), 
+
+(3,'','text','Following section guides you on how to install GNU C/C++ compiler on various OS. I'm mentioning C/C++ together because GNU gcc compiler works for both C and C++ programming languages.'), 
+
+(3,'Installation on UNIX/Linux','text','If you are using Linux or UNIX, then check whether GCC is installed on your system by entering the following command from the command line:'), 
+
+(3,'','code','$ gcc -v'), 
+
+(3,'','text','If you have GNU compiler installed on your machine, then it should print a message something as follows:'), 
+
+(3,'','code',
+
+  'Using built-in specs.
+  Target: i386-redhat-linux
+  Configured with: ../configure --prefix=/usr .......
+  Thread model: posix
+  gcc version 4.1.2 20080704 (Red Hat 4.1.2-46)'), 
+
+(3,'','text','If GCC is not installed, then you will have to install it yourself using the detailed instructions available at http://gcc.gnu.org/install/'), 
+
+(3,'','text','This tutorial has been written based on Linux and all the given examples have been compiled on Cent OS flavor of Linux system.'), 
+
+(3,'Installation on Mac OS','text','If you use Mac OS X, the easiest way to obtain GCC is to download the Xcode development environment from Apple's web site and follow the simple installation instructions. Once you have Xcode setup, you will be able to use GNU compiler for C/C++.'), 
+
+(3,'','text','Xcode is currently available at developer.apple.com/technologies/tools/'), 
+
+(3,'Installation on Windows','text','To install GCC at Windows you need to install MinGW. To install MinGW, go to the MinGW homepage, www.mingw.org, and follow the link to the MinGW download page. Download the latest version of the MinGW installation program, which should be named MinGW-<version>.exe.'), 
+
+(3,'','text','While installing MinWG, at a minimum, you must install gcc-core, gcc-g++, binutils, and the MinGW runtime, but you may wish to install more.'), 
+
+(3,'','text','Add the bin subdirectory of your MinGW installation to your PATH environment variable, so that you can specify these tools on the command line by their simple names.'), 
+
+(3,'','text','When the installation is complete, you will be able to run gcc, g++, ar, ranlib, dlltool, and several other GNU tools from the Windows command line.'), 
+
+
+
+
+
+
+*********POst4************
+
+INSERT INTO `Post`(`Chapter_Id`, `Title`,`Date_Of_Post`)
+  VALUES (1 , 'C - Program Structure',Now())
+
+
+************Document4************
+
+INSERT INTO `Document` (`Post_Id` , `Title` , `Type` , `FullDocument`)
+
+VALUES(4,'','text','Before we study basic building blocks of the C programming language, let us look a bare minimum C program structure so that we can take it as a reference in upcoming chapters.'), 
+ 
+
+        (4,'C Hello World Example','text',
+                      
+               '<ul>
+                    <li>Preprocessor Commands</li>
+		    <li>Functions</li>
+                    <li>Variables</li>
+                    <li>Statements & Expressions</li>
+                    <li>Comments</li>
+
+                </ul>    '), 
+
+	
+        (4,'','text','Let us look at a simple code that would print the words "Hello World":'), 
+
+        (4,'','code',
+                    'include <stdio.h>
+
+                      int main()
+                        {
+                         /* my first program in C */
+                         printf("Hello, World! \n");
+   
+                         return 0;
+                         }   '), 
+
+	
+	(4,'','text','Let us look various parts of the above program:'), 
+
+	(4,'','text',
+                     '<ol>
+                         <li>The first line of the program #include <stdio.h> is a preprocessor command, which tells a C compiler to include stdio.h file before going to actual compilation.</li>
+		         <li>The next line int main() is the main function where program execution begins.</li>
+                         <li>The next line /*...*/ will be ignored by the compiler and it has been put to add additional comments in the program. So such lines are called comments in the program.</li>
+                         <li>The next line printf(...) is another function available in C which causes the message "Hello, World!" to be displayed on the screen.</li>
+                         <li>The next line return 0; terminates main()function and returns the value 0.</li>
+
+                      </ol>    '),  
+
+
+
+        (4,'','text','Lets look at how to save the source code in a file, and how to compile and run it. Following are the simple steps:'), 
+
+	(4,'Compile & Execute C Program:','text',
+                                                 '<ol>
+                                                     <li> Open a text editor and add the above-mentioned code. </li>
+		                                     <li>Save the file as hello.c</li>
+                                                     <li>Open a command prompt and go to the directory where you saved the file.</li>
+                                                     <li>Type gcc hello.c and press enter to compile your code.</li>
+                                                     <li>If there are no errors in your code the command prompt will take you to the next line and would generate a.out executable file.</li>
+                                                     <li>Now, type a.out to execute your program.</li>
+						     <li>You will be able to see "Hello World" printed on the screen</li>
+
+                                                  </ol>   '), 
+
+	(4,'','text','Lets look at how to save the source code in a file, and how to compile and run it. Following are the simple steps:'), 
+
+	(4,'','text','$ gcc hello.c
+                      $ ./a.out
+                      Hello, World!'), 
+
+	(4,'','text','Make sure that gcc compiler is in your path and that you are running it in the directory containing source file hello.c.'), 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(5,'','text',''), 
+
+(5,'','text',''), 
+
+(5,'','text',''), 
+
+(5,'','text',''), 
+(5,'','text',''), 
+(5,'','text',''), 
+(5,'','text',''), 
+(5,'','text',''), 
+(5,'','text',''), 
+(5,'','text',''), 
+(5,'','text',''), 
+(5,'','text',''), 
+(5,'','text',''), 
+(5,'','text',''), 
+
+
+
+
+
+
+
+
